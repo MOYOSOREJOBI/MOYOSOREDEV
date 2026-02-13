@@ -1,0 +1,138 @@
+.page {
+  position: relative; z-index: 1;
+  min-height: 100vh;
+  padding: 6rem 2rem 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ── Tabs ─── */
+.tabs {
+  display: flex;
+  gap: 0;
+  margin-bottom: 3rem;
+  border: 1px solid var(--border);
+  border-radius: 50px;
+  overflow: hidden;
+}
+
+.tab {
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.75rem 2rem;
+  background: transparent;
+  color: var(--text-dim);
+  transition: all 0.3s;
+  cursor: none;
+  border-right: 1px solid var(--border);
+}
+
+.tab:last-child { border-right: none; }
+
+.tab:hover { color: #fff; }
+
+.activeTab {
+  background: var(--accent);
+  color: #fff;
+}
+
+/* ── Content ─── */
+.content {
+  width: 100%;
+  max-width: 1000px;
+}
+
+/* ── Sports ─── */
+.sportsWrap {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.sportCategory {}
+
+.categoryTitle {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent-cyan);
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.teamGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.teamCard {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  transition: all 0.3s;
+}
+
+.teamCard:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(255,0,60,0.1);
+}
+
+.teamLogo {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.05);
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.teamLogo img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+}
+
+.teamInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.teamName {
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+
+.teamLeague {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--text-dim);
+}
+
+.sportsHint {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--text-dim);
+  text-align: center;
+  padding: 1.5rem;
+  border: 1px dashed var(--border);
+  border-radius: 8px;
+}
+
+@media (max-width: 640px) {
+  .tabs { flex-wrap: wrap; border-radius: 12px; }
+  .tab { flex: 1; text-align: center; padding: 0.6rem 1rem; }
+}

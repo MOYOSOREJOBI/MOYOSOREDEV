@@ -1,0 +1,82 @@
+.page {
+  position: relative; z-index: 1;
+  min-height: 100vh;
+  padding: 6rem 2rem 3rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 2.5rem 2rem;
+  text-align: center;
+  transition: all 0.35s var(--ease-out-expo);
+  cursor: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%; width: 100%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.06), transparent);
+  transition: left 0.5s;
+}
+
+.card:hover::before { left: 100%; }
+
+.card:hover {
+  transform: translateY(-8px);
+  border-color: var(--accent);
+  box-shadow: 0 16px 40px rgba(255,0,60,0.15);
+}
+
+.cardIcon {
+  width: 64px; height: 64px;
+  margin: 0 auto 1.5rem;
+  background: linear-gradient(135deg, var(--accent), var(--accent-cyan));
+  border-radius: 16px;
+  display: grid; place-items: center;
+  font-family: var(--font-display);
+  font-size: 1.8rem; font-weight: 700; color: #fff;
+}
+
+.cardLabel {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  letter-spacing: 0.1em;
+  margin-bottom: 1rem;
+}
+
+.playHint {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  color: var(--accent);
+  text-transform: uppercase;
+}
+
+.gameWrap {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.backBtn {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-dim);
+  margin-bottom: 2rem;
+  transition: color 0.3s;
+  cursor: none;
+}
+
+.backBtn:hover { color: #fff; }

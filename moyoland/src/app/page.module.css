@@ -1,0 +1,196 @@
+.landing {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 2rem;
+}
+
+/* ── Neumorphic Card ─── */
+.card {
+  background: #2b2b2b;
+  padding: 5rem 4rem;
+  border-radius: 30px;
+  box-shadow:
+    20px 20px 60px #1c1c1c,
+    -20px -20px 60px #3a3a3a;
+  text-align: center;
+  max-width: 620px;
+  width: 100%;
+  animation: float 6s ease-in-out infinite;
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.exit {
+  transform: scale(0.85) translateY(-40px);
+  opacity: 0;
+  filter: blur(16px);
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-16px); }
+}
+
+/* ── Title with glitch ─── */
+.title {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 8vw, 5rem);
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.5rem;
+  position: relative;
+}
+
+.title::before,
+.title::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.title::before {
+  animation: glitch1 2s infinite linear alternate-reverse;
+  color: var(--accent);
+  z-index: -1;
+}
+
+.title::after {
+  animation: glitch2 3s infinite linear alternate-reverse;
+  color: var(--accent-cyan);
+  z-index: -2;
+}
+
+@keyframes glitch1 {
+  0%, 100% { clip-path: inset(0); transform: translate(0); }
+  20% { clip-path: inset(20% 0 30% 0); transform: translate(-2px, 2px); }
+  40% { clip-path: inset(50% 0 20% 0); transform: translate(2px, -2px); }
+  60% { clip-path: inset(10% 0 60% 0); transform: translate(-2px, 0); }
+  80% { clip-path: inset(80% 0 5% 0); transform: translate(2px, 2px); }
+}
+
+@keyframes glitch2 {
+  0%, 100% { clip-path: inset(0); transform: translate(0); }
+  20% { clip-path: inset(60% 0 10% 0); transform: translate(2px, -2px); }
+  40% { clip-path: inset(30% 0 40% 0); transform: translate(-2px, 2px); }
+  60% { clip-path: inset(10% 0 70% 0); transform: translate(2px, 0); }
+  80% { clip-path: inset(40% 0 30% 0); transform: translate(-2px, -2px); }
+}
+
+/* ── Subtitle ─── */
+.subtitle {
+  font-family: var(--font-mono);
+  color: var(--text-dim);
+  font-size: 0.85rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: 3rem;
+}
+
+/* ── Neumorphic Button ─── */
+.btn {
+  display: inline-block;
+  padding: 1.5rem 3rem;
+  background: #2b2b2b;
+  border: none;
+  border-radius: 50px;
+  box-shadow:
+    8px 8px 16px #1c1c1c,
+    -8px -8px 16px #3a3a3a;
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+  cursor: none;
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, var(--accent), var(--accent-cyan));
+  opacity: 0;
+  transition: opacity 0.3s;
+  border-radius: 50px;
+}
+
+.btn:hover {
+  box-shadow:
+    4px 4px 8px #1c1c1c,
+    -4px -4px 8px #3a3a3a;
+  transform: translateY(2px);
+}
+
+.btn:hover::before { opacity: 0.12; }
+
+.btn:active {
+  box-shadow:
+    inset 4px 4px 8px #1c1c1c,
+    inset -4px -4px 8px #3a3a3a;
+}
+
+.btnInner {
+  position: relative;
+  z-index: 1;
+  font-family: var(--font-display);
+  font-size: clamp(0.65rem, 1.5vw, 0.9rem);
+  font-weight: 700;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+}
+
+/* ── Social Links ─── */
+.socials {
+  position: fixed;
+  bottom: 2.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  z-index: 2;
+}
+
+.socialLink {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 0.4rem 0.8rem;
+  border: 1px solid transparent;
+  transition: all 0.3s;
+  position: relative;
+}
+
+.socialLink::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--accent);
+  transition: width 0.3s;
+}
+
+.socialLink:hover {
+  color: #fff;
+  border-color: var(--accent);
+}
+
+.socialLink:hover::after { width: 100%; }
+
+/* ── Responsive ─── */
+@media (max-width: 640px) {
+  .card { padding: 3rem 2rem; }
+  .socials { gap: 1rem; bottom: 1.5rem; }
+}
